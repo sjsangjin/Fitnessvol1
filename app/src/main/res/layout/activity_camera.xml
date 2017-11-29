@@ -16,6 +16,7 @@
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:Camerakit="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,13 +28,15 @@
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:id="@+id/frame">
 
         <com.flurgle.camerakit.CameraView
             android:id="@+id/cameraView"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_gravity="center|top" />
+            android:layout_height="405dp"
+            android:layout_gravity="center|top"
+            Camerakit:ckFocus="continuous" />
 
         <ImageView
             android:id="@+id/btnToggleCamera"

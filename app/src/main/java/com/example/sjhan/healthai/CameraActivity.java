@@ -4,19 +4,23 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Camera;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sjhan.healthai.Bean.MachineBean;
+import com.flurgle.camerakit.CameraKit;
 import com.flurgle.camerakit.CameraListener;
 import com.flurgle.camerakit.CameraView;
+
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -74,10 +78,12 @@ public class CameraActivity extends AppCompatActivity {
         btnDetectObject = (ImageView) findViewById(R.id.btnDetectObject);
 
 
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
                 | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+
 
 
         cameraView.setCameraListener(new CameraListener() {
@@ -88,16 +94,15 @@ public class CameraActivity extends AppCompatActivity {
                     Bitmap bitmap = BitmapFactory.decodeByteArray(picture, 0, picture.length);
                     bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, false);
 
-
+                    cameraView.setFocus(CameraKit.Constants.FOCUS_CONTINUOUS);
+                    cameraView.setJpegQuality(1024);
                     imageViewResult.setImageBitmap(bitmap);
 
                     //TensorFlowImageClassifier의 이미지분류 데이터를 넘겨주기
                     final List<Classifier.Recognition> results = classifier.recognizeImage(bitmap);
 
-
                     //Classifier의 toString()호출로, 화면에 인식결과를 찍어내기
                     textViewResult.setText(results.toString());
-
 
                     //hj
                     //성공메시지 띄우는 메소드
@@ -106,15 +111,10 @@ public class CameraActivity extends AppCompatActivity {
                     //hj
                     //verifyImage()결과, 실패 횟수에 따른 다른 작동
 
-                    if (flagged == 1) {
-                        Toast.makeText(CameraActivity.this, "(1회 실패) 인식률이 낮습니다. ", Toast.LENGTH_SHORT).show();
-
-                    } else if (flagged == 2) {
-                        Toast.makeText(CameraActivity.this, "(2회 실패) 인식률이 낮습니다. ", Toast.LENGTH_SHORT).show();
-
-                    } else if (flagged == 3) {
-                        Toast.makeText(CameraActivity.this, "(3회 실패) 인식률이 낮습니다. ", Toast.LENGTH_SHORT).show();
+                    if (flagged>= 1) {
+                        Toast.makeText(CameraActivity.this, "인식률이 낮습니다. ", Toast.LENGTH_SHORT).show();
                     }
+
                 } catch (Exception e) {
 
                 }
@@ -149,7 +149,6 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
-    //hj
     // 미션성공시 성공메시지 출력
     public boolean verifyImage() {
 
@@ -165,11 +164,11 @@ public class CameraActivity extends AppCompatActivity {
 
         String ratioResult = resultObject.substring(ratioIndexStart, ratioIndexEnd);
 
+        Toast.makeText(CameraActivity.this, ratioResult, Toast.LENGTH_LONG).show();
 
 
         boolean flag = false;
 
-        //인증 성공하면 알람이 꺼지는 동작 넣기
 
         if ((textViewResult.getText().toString().contains("chin dip assist")) && (Integer.valueOf(ratioResult) >= 0)) {
 
@@ -230,6 +229,8 @@ public class CameraActivity extends AppCompatActivity {
             intent.putExtra("machine", machineBean.getMachineName());
             startActivity(intent);
             finish();
+        }else {
+            flagged++;
         }
 
 
