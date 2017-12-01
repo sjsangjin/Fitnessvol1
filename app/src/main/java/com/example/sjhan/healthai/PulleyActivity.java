@@ -2,6 +2,7 @@ package com.example.sjhan.healthai;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public class PulleyActivity extends AppCompatActivity {
 
     private TextView txtMachieName;
-    private ListView listView;
+    private GridView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,25 +23,22 @@ public class PulleyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pulley);
 
         TextView txtMachineName = (TextView)findViewById(R.id.machineName);
-        ListView listView = (ListView)findViewById(R.id.listview);
+        GridView listView = (GridView)findViewById(R.id.listview);
 
-        String machine = (String) getIntent().getSerializableExtra("machine").toString();
+//        String machine = (String) getIntent().getSerializableExtra("machine").toString();
 
         txtMachineName.setText("하이 풀리");
 
-        VideoDataBean video1 = new VideoDataBean(R.drawable.upper1, "하이 풀리",  R.drawable.upper1, "ㅇㅇ");
-        video1.setVideoUrl("<div style=\"position:relative;height:0;padding-bottom:56.25%\"><iframe width=\"560\" height=\"400\" src=\"https://www.youtube.com/embed/jpTQdM7okkI\" frameborder=\"0\" width=\"640\" height=\"400\" style=\"position:absolute;width:100%;height:100%;left:0\" allowfullscreen></iframe></div>");
+        VideoDataBean video1 = new VideoDataBean(R.drawable.upper1,"랫 풀 다운",R.drawable.upper1,"","");
+        video1.setVideoUrl("<div style=\"position:relative;height:0;padding-bottom:56.25%\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/oP3pI794CUo\" frameborder=\"0\" width=\"640\" height=\"360\" style=\"position:absolute;width:100%;height:100%;left:0\" allowfullscreen></iframe></div>");
+        VideoDataBean video2 = new VideoDataBean(R.drawable.upper1,"와이드 그립 비하인드 랫 풀 다운",R.drawable.upper1,"","");
+        video2.setVideoUrl("<div style=\"position:relative;height:0;padding-bottom:56.25%\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/B1qXfXW5cPw\" frameborder=\"0\" width=\"640\" height=\"360\" style=\"position:absolute;width:100%;height:100%;left:0\" allowfullscreen></iframe></div>");
 
         List<VideoDataBean> list = new ArrayList<VideoDataBean>();
         list.add(video1);
-        //        list.add(video2);
-//        list.add(video3);
-//        list.add(video4);
-//        list.add(video5);
-//        list.add(video6);
+        list.add(video2);
+
         ListAdapter adapter = new ListAdapter(this, list);
-
         listView.setAdapter(adapter);
-
     }
 }

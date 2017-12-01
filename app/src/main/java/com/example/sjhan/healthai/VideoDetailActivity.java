@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -16,14 +17,16 @@ import com.example.sjhan.healthai.Util.ActivityUtil;
 
 public class VideoDetailActivity extends AppCompatActivity {
 
+    WebView webView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_detail);
         TextView txtTitle = (TextView)findViewById(R.id.txtTitle);
-        WebView webView = (WebView)findViewById(R.id.wbvYoutube);
         TextView txtDes = (TextView)findViewById(R.id.txtDes);
         ImageView imgWorkout = (ImageView)findViewById(R.id.imgWorkout);
+        webView = (WebView)findViewById(R.id.wbvYoutube);
         webView.getSettings().setJavaScriptEnabled(true);
 
         VideoDataBean video = (VideoDataBean)getIntent().getSerializableExtra("video");
@@ -34,6 +37,7 @@ public class VideoDetailActivity extends AppCompatActivity {
         if(video!=null)
         {
             webView.loadData(video.getVideoUrl(), "text/html", "utf-8");
+            webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
             txtTitle.setText(video.getTitle());
             imgWorkout.setImageResource(video.getPart());
             txtDes.setText(video.getDescript());
@@ -58,5 +62,24 @@ public class VideoDetailActivity extends AppCompatActivity {
 //            }
 //        });
     }
+
+    @Override
+    protected void onPause() {
+// TODO Auto-generated method stub
+        super.onPause();
+        webView.pauseTimers();
+    }
+
+    /* (non-Javadoc)
+    * @see android.app.Activity#onResume()
+    */
+    @Override
+    protected void onResume() {
+// TODO Auto-generated method stub
+        super.onResume();
+        webView.resumeTimers();
+    }
+
+
 
 }

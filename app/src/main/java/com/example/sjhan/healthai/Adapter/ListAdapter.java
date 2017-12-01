@@ -48,7 +48,7 @@ public class ListAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater li = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = li.inflate(R.layout.lay_video, null); //null에는 가져오고자하는 부모가 있는 경우에 써줌
+        convertView = li.inflate(R.layout.lay_video, parent, false); //null에는 가져오고자하는 부모가 있는 경우에 써줌
 
         //데이터 찾는다.
         final VideoDataBean video = list.get(position);       //실행되느 시점에 누군가 변경을 하지 못하게 final선언

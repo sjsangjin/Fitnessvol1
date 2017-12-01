@@ -30,11 +30,11 @@ public class ChinActivity extends AppCompatActivity {
 
         txtMachineName.setText("친 딥 어시스트");
 
-        VideoDataBean video1 = new VideoDataBean(R.drawable.upper1, "친 딥 어시스트", R.drawable.upper1, "ㅇㅇ");
-        video1.setVideoUrl("<div style=\"position:relative;height:0;padding-bottom:56.25%\"><iframe width=\"560\" height=\"400\" src=\"https://www.youtube.com/embed/jpTQdM7okkI\" frameborder=\"0\" width=\"640\" height=\"400\" style=\"position:absolute;width:100%;height:100%;left:0\" allowfullscreen></iframe></div>");
-
+//        VideoDataBean video1 = new VideoDataBean(R.drawable.upper1, "친 딥 어시스트", R.drawable.upper1, "","ㅇㅇ");
+//        video1.setVideoUrl("<div style=\"position:relative;height:0;padding-bottom:56.25%\"><iframe width=\"560\" height=\"400\" src=\"https://www.youtube.com/embed/jpTQdM7okkI\" frameborder=\"0\" width=\"640\" height=\"400\" style=\"position:absolute;width:100%;height:100%;left:0\" allowfullscreen></iframe></div>");
+//
         List<VideoDataBean> list = new ArrayList<VideoDataBean>();
-        list.add(video1);
+//        list.add(video1);
 //        list.add(video2);
 //        list.add(video3);
 //        list.add(video4);

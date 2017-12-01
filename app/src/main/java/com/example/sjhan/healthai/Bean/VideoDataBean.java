@@ -9,13 +9,15 @@ public class VideoDataBean implements Serializable{
     public int part;
     public String descript;
     public String videoUrl;
+    public String part2;
 
 
-    public VideoDataBean(int photo, String title, int part, String descript)
+    public VideoDataBean(int photo, String title, int part, String part2, String descript)
     {
         this.photo=photo;
         this.title=title;
         this.part=part;
+        this.part2 = part2;
         this.descript=descript;
     }
 
@@ -60,4 +62,9 @@ public class VideoDataBean implements Serializable{
         this.videoUrl = videoUrl;
     }
 
+    public String getPart2(){return part2;}
+
+    public void setPart2(String part2){
+        this.part2 = part2;
+    }
 }

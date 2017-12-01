@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="200dp"
         android:orientation="vertical"
         android:weightSum="2.5">
@@ -22,7 +22,7 @@
 
             <ImageView
                 android:id="@+id/imgPhoto"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center"
                 app:srcCompat="@mipmap/ic_launcher_round" />
