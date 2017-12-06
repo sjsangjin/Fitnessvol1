@@ -6,17 +6,16 @@ public class VideoDataBean implements Serializable{
 
     public int photo; //영상 시작 화면
     public String title;
-    public int part;
+    public String part;
     public String descript;
     public String videoUrl;
     public String part2;
 
 
-    public VideoDataBean(int photo, String title, int part, String part2, String descript)
+    public VideoDataBean(int photo, String title, String part2, String descript)
     {
         this.photo=photo;
         this.title=title;
-        this.part=part;
         this.part2 = part2;
         this.descript=descript;
     }
@@ -37,11 +36,11 @@ public class VideoDataBean implements Serializable{
         this.title = title;
     }
 
-    public int getPart() {
+    public String getPart() {
         return part;
     }
 
-    public void setPart(int part) {
+    public void setPart(String part) {
         this.part = part;
     }
 

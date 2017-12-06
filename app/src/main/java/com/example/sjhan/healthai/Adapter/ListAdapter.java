@@ -56,9 +56,11 @@ public class ListAdapter extends BaseAdapter{
         //찾고자하는 뷰 기준으로 findViewById를 해야함
         ImageView imgAlbum = (ImageView)convertView.findViewById(R.id.imgPhoto);
         TextView txtTitle = (TextView)convertView.findViewById(R.id.txtTitle);
+        TextView txtPart = (TextView)convertView.findViewById(R.id.txtPart);
 
         imgAlbum.setImageResource(video.getPhoto());
         txtTitle.setText(video.getTitle());
+        txtPart.setText(video.getPart2());
 
 
         convertView.setOnClickListener(new View.OnClickListener() {     //new + ctrl + 스페이스

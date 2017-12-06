@@ -1,8 +1,10 @@
 package com.example.sjhan.healthai;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -23,9 +25,12 @@ public class VideoDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_detail);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.actionbar)));
+
+
         TextView txtTitle = (TextView)findViewById(R.id.txtTitle);
         TextView txtDes = (TextView)findViewById(R.id.txtDes);
-        ImageView imgWorkout = (ImageView)findViewById(R.id.imgWorkout);
+        TextView imgWorkout = (TextView) findViewById(R.id.imgWorkout);
         webView = (WebView)findViewById(R.id.wbvYoutube);
         webView.getSettings().setJavaScriptEnabled(true);
 
@@ -39,7 +44,7 @@ public class VideoDetailActivity extends AppCompatActivity {
             webView.loadData(video.getVideoUrl(), "text/html", "utf-8");
             webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
             txtTitle.setText(video.getTitle());
-            imgWorkout.setImageResource(video.getPart());
+            imgWorkout.setText(video.getPart2());
             txtDes.setText(video.getDescript());
         }
 
@@ -79,7 +84,6 @@ public class VideoDetailActivity extends AppCompatActivity {
         super.onResume();
         webView.resumeTimers();
     }
-
 
 
 }

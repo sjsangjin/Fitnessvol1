@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Camera;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,6 +60,7 @@ public class CameraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.actionbar)));
 
         Bundle bundle = this.getIntent().getExtras();
 
@@ -95,7 +95,6 @@ public class CameraActivity extends AppCompatActivity {
                     bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, false);
 
                     cameraView.setFocus(CameraKit.Constants.FOCUS_CONTINUOUS);
-                    cameraView.setJpegQuality(1024);
                     imageViewResult.setImageBitmap(bitmap);
 
                     //TensorFlowImageClassifier의 이미지분류 데이터를 넘겨주기
@@ -111,9 +110,6 @@ public class CameraActivity extends AppCompatActivity {
                     //hj
                     //verifyImage()결과, 실패 횟수에 따른 다른 작동
 
-                    if (flagged>= 1) {
-                        Toast.makeText(CameraActivity.this, "인식률이 낮습니다. ", Toast.LENGTH_SHORT).show();
-                    }
 
                 } catch (Exception e) {
 
@@ -170,21 +166,19 @@ public class CameraActivity extends AppCompatActivity {
         boolean flag = false;
 
 
-        if ((textViewResult.getText().toString().contains("chin dip assist")) && (Integer.valueOf(ratioResult) >= 0)) {
+        if ((textViewResult.getText().toString().contains("kettlebell")) && (Integer.valueOf(ratioResult) >= 0)) {
 
-            flagged = 0;
             flag = true;
             authenticated = true;
 
             MachineBean machineBean = new MachineBean("chin");
-            Intent intent = new Intent(CameraActivity.this, ChinActivity.class);
+            Intent intent = new Intent(CameraActivity.this, KettelbellActivity.class);
             intent.putExtra("machine", machineBean.getMachineName());
             startActivity(intent);
             finish();
 
         } else if ((textViewResult.getText().toString().contains("dumbbell")) && (Integer.valueOf(ratioResult) >= 0)) {
 
-            flagged = 0;
             flag = true;
             authenticated = true;
 
@@ -196,7 +190,6 @@ public class CameraActivity extends AppCompatActivity {
 
         } else if ((textViewResult.getText().toString().contains("high pulley")) && (Integer.valueOf(ratioResult) >= 0)) {
 
-            flagged = 0;
             flag = true;
             authenticated = true;
 
@@ -208,7 +201,6 @@ public class CameraActivity extends AppCompatActivity {
 
         } else if ((textViewResult.getText().toString().contains("power leg press")) && (Integer.valueOf(ratioResult) >= 0)) {
 
-            flagged = 0;
             flag = true;
             authenticated = true;
 
@@ -220,7 +212,6 @@ public class CameraActivity extends AppCompatActivity {
 
         } else if ((textViewResult.getText().toString().contains("smith machine")) && (Integer.valueOf(ratioResult) >= 0)) {
 
-            flagged = 0;
             flag = true;
             authenticated = true;
 
@@ -230,7 +221,6 @@ public class CameraActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }else {
-            flagged++;
         }
 
 

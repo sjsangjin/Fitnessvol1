@@ -69,7 +69,7 @@ public interface Classifier {
             String resultString = "";
             if (id != null) {
                 //hj
-                //resultString += "[" + id + "] ";
+                resultString += "[" + id + "] ";
             }
 
             if (title != null) {
@@ -82,7 +82,7 @@ public interface Classifier {
             }
 
             if (location != null) {
-                //resultString += location + " ";
+                resultString += location + " ";
             }
 
             return resultString.trim();
