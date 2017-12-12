@@ -7,13 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.sjhan.healthai.Util.ActivityUtil;
+
 public class StartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.actionbar)));
+        ActivityUtil.setActionBarColor(this, R.color.colorAccent);
 
 
         Button btnCameraStart = (Button)findViewById(R.id.btnCameraStart);

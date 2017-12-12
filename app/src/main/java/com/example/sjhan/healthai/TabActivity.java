@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.sjhan.healthai.Adapter.PagerAdapter;
+import com.example.sjhan.healthai.Util.ActivityUtil;
 
 
 public class TabActivity extends AppCompatActivity {
@@ -18,14 +19,8 @@ public class TabActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.actionbar)));
+        ActivityUtil.setActionBarColor(this, R.color.colorAccent);
 
-        //actionBar 객체를 가져올 수 있다.
-        ActionBar actionBar = getSupportActionBar();
-
-        //메뉴바에 '<' 버튼이 생긴다.(두개는 항상 같이다닌다)
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
 
         TabLayout tabLayout=(TabLayout)findViewById(R.id.tab_layout);
 

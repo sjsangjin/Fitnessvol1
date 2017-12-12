@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.sjhan.healthai.Adapter.ListAdapter;
 import com.example.sjhan.healthai.Bean.VideoDataBean;
+import com.example.sjhan.healthai.Util.ActivityUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +25,13 @@ public class KettelbellActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kettelbell);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.actionbar)));
+        ActivityUtil.setActionBarColor(this, R.color.colorAccent);
 
 
         TextView txtMachineName = (TextView) findViewById(R.id.machineName);
         GridView listView = (GridView) findViewById(R.id.listview);
 
-        String machine = (String) getIntent().getSerializableExtra("machine").toString();
+//        String machine = (String) getIntent().getSerializableExtra("kettlebell").toString();
 
         txtMachineName.setText("케틀벨");
 

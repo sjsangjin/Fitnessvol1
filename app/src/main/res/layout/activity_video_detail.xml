@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="0.5"
+                android:layout_weight="0.7"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="영상 제목"
@@ -78,7 +78,65 @@
                     android:text="운동설명"
                     android:textSize="14sp" />
             </LinearLayout>
+
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="#ff4041"
+                    android:gravity="center"
+                    android:text="STOPWATCH"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <Chronometer
+                    android:id="@+id/chronometer"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/buttonstart"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1.2"
+                    android:background="@drawable/btnimg"
+                    android:text="Start"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/buttonstop"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1.2"
+                    android:background="@drawable/btnimg"
+                    android:text="Stop"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

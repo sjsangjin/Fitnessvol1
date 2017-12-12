@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.sjhan.healthai.Adapter.ListAdapter;
 import com.example.sjhan.healthai.Bean.VideoDataBean;
+import com.example.sjhan.healthai.Util.ActivityUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,17 +23,13 @@ public class DumbbellActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dumbbell);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.actionbar)));
-
+        ActivityUtil.setActionBarColor(this, R.color.colorAccent);
 
         TextView txtMachineName = (TextView) findViewById(R.id.machineName);
         GridView listView = (GridView) findViewById(R.id.listview);
 
-        String machine = (String) getIntent().getSerializableExtra("machine").toString();
-
         txtMachineName.setText("덤벨");
 
-        //사진 바꿔야됑
         VideoDataBean video1 = new VideoDataBean(R.drawable.dumbbellsholderpress,"덤벨 숄더프레스","운동부위:어깨",
                 "주의사항\n덤벨이 지나치게 몸쪽이나 바깥쪽으로 나가면 주변 근육의 상해의 위험이 있으므로 주의한다.\n덤벨이 뒤쪽으로 넘어가게 되면 어깨 탈구의 위험이 증가하게 되므로 주의한다." +
                         "\n\n운동팁\n덤벨이 서로 부딪히거나 팔꿈치가 완전히 펴지게 되지 않도록 주의한다.");

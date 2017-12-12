@@ -25,7 +25,7 @@ public class VideoDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_detail);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.actionbar)));
+        ActivityUtil.setActionBarColor(this, R.color.colorAccent);
 
 
         TextView txtTitle = (TextView)findViewById(R.id.txtTitle);
@@ -36,7 +36,6 @@ public class VideoDetailActivity extends AppCompatActivity {
 
         VideoDataBean video = (VideoDataBean)getIntent().getSerializableExtra("video");
 
-        ActivityUtil.setActionBarColor(this, R.color.colorAccent);
 
 
         if(video!=null)
@@ -49,23 +48,23 @@ public class VideoDetailActivity extends AppCompatActivity {
         }
 
 //        타이머기능
-//        final Chronometer chronometer = (Chronometer) findViewById(R.id.chronometer);
-//        Button buttonStart = (Button) findViewById(R.id.buttonstart);
-//        Button buttonStop = (Button) findViewById(R.id.buttonstop);
-//
-//
-//        buttonStart.setOnClickListener(new Button.OnClickListener() {
-//            public void onClick(View v) {
-//                chronometer.setBase(SystemClock.elapsedRealtime());
-//                chronometer.start();
-//            }
-//        });
-//
-//        buttonStop.setOnClickListener(new Button.OnClickListener() {
-//            public void onClick(View v) {
-//                chronometer.stop();
-//            }
-//        });
+        final Chronometer chronometer = (Chronometer) findViewById(R.id.chronometer);
+        Button buttonStart = (Button) findViewById(R.id.buttonstart);
+        Button buttonStop = (Button) findViewById(R.id.buttonstop);
+
+
+        buttonStart.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                chronometer.setBase(SystemClock.elapsedRealtime());
+                chronometer.start();
+            }
+        });
+
+        buttonStop.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                chronometer.stop();
+            }
+        });
     }
 
     @Override

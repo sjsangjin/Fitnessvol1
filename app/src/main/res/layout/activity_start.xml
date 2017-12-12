@@ -27,8 +27,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical|center_horizontal"
             android:text="운동기구?"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,7 +41,7 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_weight="0.3"
-                android:background="@color/click"
+                android:background="#ff9999"
                 android:text="TOUCH"
                 android:textSize="20sp" />
 
@@ -73,8 +72,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical|center_horizontal"
             android:text="운동루틴?"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,7 +86,7 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_weight="0.3"
-                android:background="@color/background"
+                android:background="#ff9999"
                 android:text="TOUCH"
                 android:textSize="20sp" />
 

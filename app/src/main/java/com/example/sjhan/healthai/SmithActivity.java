@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.sjhan.healthai.Adapter.ListAdapter;
 import com.example.sjhan.healthai.Bean.VideoDataBean;
+import com.example.sjhan.healthai.Util.ActivityUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +23,13 @@ public class SmithActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smith);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.actionbar)));
+        ActivityUtil.setActionBarColor(this, R.color.colorAccent);
 
 
         TextView txtMachineName = (TextView)findViewById(R.id.machineName);
         GridView listView = (GridView)findViewById(R.id.listview);
 
-        String machine = (String) getIntent().getSerializableExtra("machine").toString();
+//        String machine = (String) getIntent().getSerializableExtra("smith").toString();
 
         txtMachineName.setText("스미스머신");
 
@@ -36,7 +37,7 @@ public class SmithActivity extends AppCompatActivity {
                 "둔근, 대퇴 후면 근육 등 전신 근육 발달에 중요한 영향을 끼치는 운동이다. 근육들의 근력을 전반적으로 향상 시킬 수 있는 운동이다." +
                         "\n주의사항\n무릎 각을 유지하도록 하며 상하체의 힘이 적절히 조화될 수 있도록 한다.");
         video1.setVideoUrl("<div style=\"position:relative;height:0;padding-bottom:56.25%\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Vi-RLKMYmgI\" frameborder=\"0\" width=\"640\" height=\"360\" style=\"position:absolute;width:100%;height:100%;left:0\" allowfullscreen></iframe></div>");
-        VideoDataBean video2 = new VideoDataBean(R.drawable.bentoverrow,"벤트 오버 로우","운동부위:등",
+        VideoDataBean video2 = new VideoDataBean(R.drawable.bentoverrow,"벤트 오버 바벨로우","운동부위:등",
                 "주의사항\n허리에 부담이 갈 수 있으므로 스트레칭을 실시해준다.\n등과 허리라인은 아치형을 유지하도록 한다.");
         video2.setVideoUrl("<div style=\"position:relative;height:0;padding-bottom:56.25%\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/xnf8T80nCLY\" frameborder=\"0\" width=\"640\" height=\"360\" style=\"position:absolute;width:100%;height:100%;left:0\" allowfullscreen></iframe></div>");
         VideoDataBean video3 = new VideoDataBean(R.drawable.squart,"스쿼트","운동부위:허벅지 앞",

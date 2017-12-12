@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sjhan.healthai.Bean.MachineBean;
+import com.example.sjhan.healthai.Util.ActivityUtil;
 import com.flurgle.camerakit.CameraKit;
 import com.flurgle.camerakit.CameraListener;
 import com.flurgle.camerakit.CameraView;
@@ -60,7 +61,7 @@ public class CameraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getColor(R.color.actionbar)));
+        ActivityUtil.setActionBarColor(this, R.color.colorAccent);
 
         Bundle bundle = this.getIntent().getExtras();
 
@@ -160,7 +161,7 @@ public class CameraActivity extends AppCompatActivity {
 
         String ratioResult = resultObject.substring(ratioIndexStart, ratioIndexEnd);
 
-        Toast.makeText(CameraActivity.this, ratioResult, Toast.LENGTH_LONG).show();
+//        Toast.makeText(CameraActivity.this, resultObject+ratioResult, Toast.LENGTH_LONG).show();
 
 
         boolean flag = false;
@@ -171,9 +172,7 @@ public class CameraActivity extends AppCompatActivity {
             flag = true;
             authenticated = true;
 
-            MachineBean machineBean = new MachineBean("chin");
             Intent intent = new Intent(CameraActivity.this, KettelbellActivity.class);
-            intent.putExtra("machine", machineBean.getMachineName());
             startActivity(intent);
             finish();
 
@@ -182,9 +181,7 @@ public class CameraActivity extends AppCompatActivity {
             flag = true;
             authenticated = true;
 
-            MachineBean machineBean = new MachineBean("dumbbell");
             Intent i = new Intent(CameraActivity.this, DumbbellActivity.class);
-            i.putExtra("machine", machineBean.getMachineName());
             startActivity(i);
             finish();
 
@@ -193,9 +190,7 @@ public class CameraActivity extends AppCompatActivity {
             flag = true;
             authenticated = true;
 
-            MachineBean machineBean = new MachineBean("pulley");
             Intent intent = new Intent(CameraActivity.this, PulleyActivity.class);
-            intent.putExtra("machine", machineBean.getMachineName());
             startActivity(intent);
             finish();
 
@@ -204,9 +199,7 @@ public class CameraActivity extends AppCompatActivity {
             flag = true;
             authenticated = true;
 
-            MachineBean machineBean = new MachineBean("press");
             Intent intent = new Intent(CameraActivity.this, PressActivity.class);
-            intent.putExtra("machine", machineBean.getMachineName());
             startActivity(intent);
             finish();
 
@@ -215,15 +208,23 @@ public class CameraActivity extends AppCompatActivity {
             flag = true;
             authenticated = true;
 
-            MachineBean machineBean = new MachineBean("smith");
             Intent intent = new Intent(CameraActivity.this, SmithActivity.class);
-            intent.putExtra("machine", machineBean.getMachineName());
             startActivity(intent);
             finish();
-        }else {
+
+        }else if ((textViewResult.getText().toString().contains("foamroller")) && (Integer.valueOf(ratioResult) >= 0)) {
+
+            flag = true;
+            authenticated = true;
+
+            Intent intent = new Intent(CameraActivity.this, RollerActivity.class);
+            startActivity(intent);
+            finish();
+
         }
-
-
+        else {
+            Toast.makeText(CameraActivity.this, "사진을 다시 찍어주세요", Toast.LENGTH_SHORT).show();
+        }
         return flag;
     }
 
